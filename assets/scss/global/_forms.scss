@@ -1,0 +1,221 @@
+[contenteditable] {
+	outline: none !important;
+}
+
+.form-control {
+	border: none;
+	outline: none !important;
+	-webkit-appearance: none;
+	background: none;
+	overflow: hidden;
+
+	height: 65px;
+	line-height: normal;
+	color: #000;
+	font-weight: 400;
+	font-size: 16px;
+	font-family: $font-family; 
+	
+	border-radius: 3px;
+	
+	border: 1px solid #ccc;
+	
+
+	padding-left: 20px;
+	padding-right: 0;
+
+	width: 100%;
+	background-color: #fff;
+
+	// Unstyle the caret on `<select>`s in IE10+.
+	&::-ms-expand {
+		background-color: transparent;
+		border: 0;
+	}
+
+	&:-moz-focusring {
+		color: transparent;
+		text-shadow: 0 0 0 $input-color;
+	}
+
+	&::placeholder {
+		color: #879ea7;
+		// Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526.
+		opacity: 1;
+	}
+
+	&:-moz-placeholder {
+		color: #879ea7;
+	}
+	&::-moz-placeholder { 
+		color: #879ea7;
+	}
+	&:-ms-input-placeholder { 
+		color: #879ea7;
+	}
+	&::-webkit-input-placeholder {
+		color: #879ea7;
+	}
+}
+
+select.form-control {
+	&:focus::-ms-value {
+		// Suppress the nested default white text on blue background highlight given to
+		// the selected option text when the (still closed) <select> receives focus
+		// in IE and (under certain conditions) Edge, as it looks bad and cannot be made to
+		// match the appearance of the native widget.
+		// See https://github.com/twbs/bootstrap/issues/19398.
+		color: $input-color;
+		background-color: $input-bg;
+	}
+}
+
+.checkbox-wrapper {
+	
+	label {
+		cursor: pointer;
+		position: relative;
+		display: inline-block;
+		padding-left: 28px;
+		
+		color: #333333;
+		font-size: 13px;
+		line-height: 23px;
+		font-weight: 400;
+		
+		margin-bottom: 0;
+		
+		a {
+			text-decoration: none !important;
+			color: #333333 !important;
+			border-bottom: 1px solid #bde1cc;
+			
+			transition: all 0.2s ease-in-out;
+			
+			&:hover {
+				border-bottom-color: transparent;
+			}
+		}
+		
+		&:before {
+			content: "";
+			display: block;
+			
+			width: 16px;
+			height: 16px;
+			
+			border-radius: 5px;
+			background-color: transparent;
+			border: 1px solid $brand-color;
+			
+			position: absolute;
+			left: 0;
+			top: 4px;
+		}
+		
+		&:after {
+			content: "";
+			display: block;
+			
+			width: 16px;
+			height: 16px;
+			
+			background-repeat: no-repeat;
+			background-size: 12px auto;
+			background-position: center center;
+			background-image: url("../img/icons/tick.svg");
+			
+			position: absolute;
+			top: 4px;
+			left: 0;
+			
+			opacity: 0;
+		}
+	}
+	
+	input {
+		display: none;
+		
+		&:checked + label:before {
+			background-color: $brand-color;
+		}
+		
+		&:checked + label:after {
+			opacity: 1;
+		}
+	}
+}
+
+@mixin loader-anim {
+	background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzgiIGhlaWdodD0iMzgiIHZpZXdCb3g9IjAgMCAzOCAzOCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBzdHJva2U9IiMyN2FlNjEiPjxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMSAxKSIgc3Ryb2tlLXdpZHRoPSIyIj48Y2lyY2xlIHN0cm9rZS1vcGFjaXR5PSIuNSIgY3g9IjE4IiBjeT0iMTgiIHI9IjE4IiAvPjxwYXRoIGQ9Ik0zNiAxOGMwLTkuOTQtOC4wNi0xOC0xOC0xOCI+PGFuaW1hdGVUcmFuc2Zvcm0gYXR0cmlidXRlTmFtZT0idHJhbnNmb3JtIiB0eXBlPSJyb3RhdGUiIGZyb209IjAgMTggMTgiIHRvPSIzNjAgMTggMTgiIGR1cj0iMXMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIiAvPiA8L3BhdGg+PC9nPjwvZz48L3N2Zz4=);
+}
+
+form.loading {
+	position: relative;
+	
+	&:before {
+		content: "";
+		display: block;
+		
+		width: 100%;
+		height: 100%;
+		
+		background-color: rgba(255,255,255,0.6);
+		
+		background-repeat: no-repeat;
+		background-size: 50px auto;
+		background-position: center center;
+		
+		@include loader-anim;
+		
+		position: absolute;
+		top: 0;
+		left: 0;
+		
+		z-index: 50;
+	}
+}
+
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    margin: 0;
+    -webkit-appearance: none;
+}
+
+// Form grid
+//
+// Special replacement for our grid system's `.row` for tighter form layouts.
+.form-row {
+	display: flex;
+	flex-wrap: wrap;
+	margin-right: -$form-grid-gutter-width;
+	margin-left: -$form-grid-gutter-width;
+	> .col,
+	> [class*="col-"] {
+		padding-right: $form-grid-gutter-width;
+		padding-left: $form-grid-gutter-width;
+	}
+}
+
+input::-ms-clear {
+    display: none;
+}
+
+input::-ms-clear {  display: none; width : 0; height: 0; }
+input::-ms-reveal {  display: none; width : 0; height: 0; }
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button,
+input::-webkit-search-results-button,
+input::-webkit-search-results-decoration { display: none; }
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+

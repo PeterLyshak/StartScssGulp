@@ -1,0 +1,41 @@
+
+.btn {
+  @include reset-button();
+  
+  background-color: $brand-color;
+  
+  text-align: center;
+  border-radius: 0;
+  color: #fff;
+
+  font-family: $font-family;
+  font-size: 16px;
+  font-weight: 700;
+
+  line-height: 20px;
+
+  padding-top: 20px;
+  padding-bottom: 20px;
+  
+  transition: all 0.2s ease-in-out;
+  
+  &:hover {
+    background-color: lighten($brand-color, 5%);
+    box-shadow: none;
+
+  }
+  
+  &:active {
+    transform: translateY(3px);
+    box-shadow: none;
+    background-color: darken($brand-color, 10%);
+  }
+  
+  &:active,
+  &:focus,
+  &:hover {
+    color: #fff;
+    text-decoration: none !important;
+    outline: none !important;
+  }
+}

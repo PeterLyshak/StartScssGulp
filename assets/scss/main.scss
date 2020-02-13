@@ -1,0 +1,41 @@
+
+// GLOBAL STYLES
+@import "global/custom-variables";
+
+@import "global/functions";
+@import "global/bootstrap-variables";
+@import "global/mixins";
+@import "global/reboot";
+@import "global/type";
+@import "global/grid";
+@import "global/forms";
+@import "global/buttons";
+@import "global/utilities";
+@import "global/fonts";
+
+// PLUGINS STYLE
+//@import "plugins/";
+
+// BLOCKS STYLE
+@import "blocks/popup-block";
+@import "blocks/page-header";
+@import "blocks/first-block";
+
+@import "blocks/page-footer";
+
+body {
+	position: relative;
+	background-color: #fff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+	
+	font-family: $font-family;
+	color: #000;
+	font-weight: 400;
+	line-height: 1.2;
+	font-size: 16px;
+	min-width: 320px;
+	
+}
+
+
