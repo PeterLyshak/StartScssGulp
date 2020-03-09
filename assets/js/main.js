@@ -13,7 +13,7 @@ function openModal(hrefModal) {
         $(hrefModal).trigger('beforeOpenModal').fadeIn(300).trigger('afterOpenModal');
     
         bodyScrollLock.clearAllBodyScrollLocks();
-        bodyScrollLock.disableBodyScroll(hrefModal, bodyScrollOptions);
+        bodyScrollLock.disableBodyScroll($(hrefModal)[0], bodyScrollOptions);
     }
 	
 }
@@ -34,7 +34,7 @@ $(document.body).on('click','[data-toggle="switch-modal"]',function(e) {
 	
 	$(hrefModal).fadeIn(200);
     
-	bodyScrollLock.disableBodyScroll(hrefModal, bodyScrollOptions);
+	bodyScrollLock.disableBodyScroll($(hrefModal)[0], bodyScrollOptions);
 	
 });
 
