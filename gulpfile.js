@@ -127,9 +127,6 @@ gulp.task('css:build', function () {
 		}))
 		.pipe(cleanCSS())
 		.pipe(gulp.dest(path.build.css))
-		.pipe(webserver.reload({stream: true}));
-  
-  done()
 });
 
 gulp.task('watch:css', function() {
