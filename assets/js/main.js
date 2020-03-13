@@ -2,11 +2,12 @@
 // Set fixed elements that need padding-right when locking the scroll
 window.paddingRightItems = '#page-header';
 
-
+// Locking scroll plugin options
 var bodyScrollOptions = {
     reserveScrollBarGap: true
 };
 
+// Open Modal function
 function openModal(hrefModal) {
     
     if ($(hrefModal).length > 0){
@@ -18,13 +19,14 @@ function openModal(hrefModal) {
 	
 }
 
+// Close Modal function
 function closeModals() {
 	$('.popup-block:not(:hidden)').trigger('beforeCloseModal').fadeOut(200, function() {
         bodyScrollLock.clearAllBodyScrollLocks();
     }).trigger('afterCloseModal');
 }
 
-
+// Switch Modal function
 $(document.body).on('click','[data-toggle="switch-modal"]',function(e) {
 	e.preventDefault();
 	
@@ -56,17 +58,19 @@ $(document.body).on('click','.popup-block__overlay',function(e) {
 	}
 });
 
-
+// Attribute for closing modals
 $(document.body).on('click','[data-toggle="modal-dismiss"]',function(e) {
 	e.preventDefault();
 	
 	closeModals();
 });
 
+// Disable copy or paste possibility
 $(document).off('cut copy paste', '.no-paste').on('cut copy paste', '.no-paste', function(e) {
 	e.preventDefault();
 });
 
+// Adding not-empty class if the input/textarea has value
 $('input, textarea').each(function(e) {
 	if ($(this).val() != '') {
 		$(this).addClass('not-empty').parent().addClass('not-empty');
@@ -282,7 +286,4 @@ $(document).ready(function() {
 	});
 	
 });
-
-
-
 
