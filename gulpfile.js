@@ -1,23 +1,38 @@
-const gulp = require('gulp')
+'use strict';
 
-global.URL = require('url').URL
+/* Plugins
+********************
+gulp-load-plugins
+gulp-file-include
+gulp-sass
+gulp-csso
+gulp-notify
+gulp-autoprefixer
+gulp-sourcemaps
+gulp-browserSync
+gulp-concat
 
-const serve = require('./gulp/tasks/serve')
-const html = require('./gulp/tasks/html')
-const styles = require('./gulp/tasks/styles')
-const jsplugins = require('./gulp/tasks/jsplugins')
-const script = require('./gulp/tasks/script')
-const fonts = require('./gulp/tasks/fonts')
-const imageMinify = require('./gulp/tasks/imageMinify')
-const clean = require('./gulp/tasks/clean')
-const lighthouse = require('./gulp/tasks/lighthouse')
-const svgSprite = require('./gulp/tasks/svgSprite')
+*/
 
-const dev = gulp.parallel(html, styles, jsplugins, script, fonts, imageMinify, svgSprite)
+global.$ = {
+    gulp: require('gulp'),
+    gp: require('gulp-load-plugins')(),
+    bs: require('browser-sync').create(),
 
-const build = gulp.series(clean, dev)
+    path: {
+        tasks: require('./gulp/config/tasks.js')
+    }
+};
 
-module.exports.default = gulp.series(build, serve)
-module.exports.build = build
+$.path.tasks.forEach(function (taskPath) {
+    require(taskPath)();
+});
 
-module.exports.lighthouse = gulp.series(lighthouse)
+$.gulp.task('default',$.gulp.series(
+    // $.gulp.parallel('html','sass','scripts:lib','scripts','img','fonts', 'svg'),
+    $.gulp.parallel('watch','serve')
+));
+
+$.gulp.task('build',$.gulp.series(
+    $.gulp.parallel('html','sass','scripts:lib','scripts','img','fonts', 'svg')
+));
