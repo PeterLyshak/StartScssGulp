@@ -1,34 +1,23 @@
 module.exports = function() {
 
     $.gulp.task('svg', function() {
+        var fontName = 'ico-font';
+        var runTimestamp = Math.round(Date.now()/1000);
+
         return $.gulp.src('assets/img/svg-icons/*.svg')
-            // minify svg
-            .pipe($.gp.svgmin({
-                js2svg: {
-                    pretty: true
-                }
+            .pipe($.gp.iconfontCss({
+                fontName: fontName, // The name that the generated font will have
+                path: 'assets/scss/plugins/icons-font-template.scss', // The path to the template that will be used to create the SASS/LESS/CSS file
+                targetPath: '../../scss/plugins/icons.scss', // The path where the file will be generated
+                fontPath: 'assets/fonts/icofont/' // The path to the icon font file
             }))
-            // remove all fill, style and stroke declarations in out shapes
-            .pipe($.gp.cheerio({
-                run: function($) {
-                    // $('[fill]').removeAttr('fill');
-                    // $('[stroke]').removeAttr('stroke');
-                    // $('[style]').removeAttr('style');
-                },
-                parserOptions: {
-                    xmlMode: true
-                }
+            .pipe($.gp.iconfont({
+                prependUnicode: false, // Recommended option 
+                fontName: fontName, // Name of the font
+                formats: ['woff2', 'woff', 'svg'], // The font file formats that will be created
+                normalize: true,
+                timestamp: runTimestamp // Recommended to get consistent builds when watching files
             }))
-            // cheerio plugin create unnecessary string '&gt;', so replace it.
-            .pipe($.gp.replace('&gt;', '>'))
-            // build svg sprite
-            .pipe($.gp.svgSprite({
-                mode: {
-                    symbol: {
-                        sprite: "../sprite.svg",
-                    }
-                }
-            }))
-            .pipe($.gulp.dest('build/img/'));
+            .pipe($.gulp.dest('assets/fonts/icofont/'));
     });
 }
