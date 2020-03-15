@@ -10,7 +10,7 @@ module.exports = function() {
     // });
     // Обработка файлов библиотек и перенос в build в исходном виде
     $.gulp.task('scripts:lib', function() {
-        return $.gulp.src('assets/js/libs/*/**')
+        return $.gulp.src('assets/js/libs/**/*')
             .pipe($.gp.concat('plugins.min.js'))
             .pipe($.gp.uglify({
                 output: {
