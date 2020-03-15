@@ -9,9 +9,10 @@ module.exports = function() {
                 fontName: fontName, // The name that the generated font will have
                 path: 'assets/scss/plugins/icons-font-template.scss', // The path to the template that will be used to create the SASS/LESS/CSS file
                 targetPath: '../../scss/plugins/icons.scss', // The path where the file will be generated
-                fontPath: '../build/fonts/icofont/' // The path to the icon font file
+                fontPath: '../fonts/icofont/' // The path to the icon font file
             }))
             .pipe($.gp.iconfont({
+                autohint: true,
                 prependUnicode: true, // Recommended option 
                 fontName: fontName, // Name of the font
                 formats: ['ttf', 'eot', 'woff', 'woff2', 'svg'], // The font file formats that will be created
