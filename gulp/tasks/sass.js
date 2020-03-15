@@ -1,10 +1,21 @@
 module.exports = function() {
     $.gulp.task('sass', function(){
+        var autoprefixerList = [
+            'Chrome >= 45'
+            , 'Firefox ESR'
+            , 'Edge >= 12'
+            , 'Explorer >= 10'
+            , 'iOS >= 9'
+            , 'Safari >= 9'
+            , 'Android >= 4.4'
+            , 'Opera >= 30'
+        ];
+
         return $.gulp.src('assets/scss/main.scss')
             .pipe($.gp.sourcemaps.init())
             .pipe($.gp.sass({outputStyle: 'expanded'}))
             .pipe($.gp.autoprefixer({
-                browsers: ['last 10 versions']
+                overrideBrowserslist: autoprefixerList
             }))
             .on("error", $.gp.notify.onError({
                 message: "Error: <%= error.message %>",
