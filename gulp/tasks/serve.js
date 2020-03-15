@@ -3,7 +3,9 @@ module.exports = function() {
         $.bs.init({
             server: {
                 baseDir: "./build"
-            }
+            },
+			injectChanges: true,
+			notify: false
         });
     });
 }
