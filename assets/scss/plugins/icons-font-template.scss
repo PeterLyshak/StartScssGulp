@@ -1,8 +1,13 @@
 @font-face {
 	font-family: "<%= fontName %>";
-	src: url('../fonts/icofont/<%= fontName %>.woff2<%= cacheBusterQueryString %>') format('woff2'),
-		url('../fonts/icofont/<%= fontName %>.woff<%= cacheBusterQueryString %>') format('woff'),
-		url('../fonts/icofont/<%= fontName %>.svg<%= cacheBusterQueryString %>#<%= fontName %>') format('svg');
+	src: url('<%= fontPath %><%= fontName %>.eot');
+	src: url('<%= fontPath %><%= fontName %>.eot?#iefix') format('eot'),
+		url('<%= fontPath %><%= fontName %>.woff2') format('woff2'),
+		url('<%= fontPath %><%= fontName %>.woff') format('woff'),
+		url('<%= fontPath %><%= fontName %>.ttf') format('truetype'),
+		url('<%= fontPath %><%= fontName %>.svg#<%= fontName %>') format('svg');
+	font-weight: normal;
+	font-style: normal;
 }
 
 @mixin <%= cssClass%>-styles {
