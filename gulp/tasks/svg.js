@@ -12,7 +12,6 @@ module.exports = function() {
                 fontPath: '../fonts/icofont/' // The path to the icon font file
             }))
             .pipe($.gp.iconfont({
-                autohint: true,
                 prependUnicode: true, // Recommended option 
                 fontName: fontName, // Name of the font
                 formats: ['ttf', 'eot', 'woff', 'woff2', 'svg'], // The font file formats that will be created
