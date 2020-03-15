@@ -24,7 +24,7 @@ module.exports = function() {
     });
 
     $.gulp.task('scripts', function() {
-        return $.gulp.src('asasets/js/*.js')
+        return $.gulp.src('assets/js/*.js')
             .pipe($.gp.uglify({
                 output: {
                     'ascii_only': true
