@@ -12,8 +12,7 @@ module.exports = function() {
         ];
 
         return $.gulp.src('assets/scss/main.scss')
-            .pipe($.gp.sourcemaps.init())
-            .pipe($.gp.sass({outputStyle: 'expanded'}))
+            .pipe($.gp.sass())
             .pipe($.gp.autoprefixer({
                 overrideBrowserslist: autoprefixerList
             }))
@@ -21,16 +20,11 @@ module.exports = function() {
                 message: "Error: <%= error.message %>",
                 title: "style"
             }))
-            // .pipe($.gp.csso())
-            
-            // .pipe($.gp.sourcemaps.write('./'))
             .pipe($.gulp.dest('build/css/'))
             // Минифицированная версия
             .pipe($.gp.sass({outputStyle: 'compressed'}))
             .pipe($.gp.rename('main.min.css'))
-            .pipe($.gp.sourcemaps.write('./'))
             .pipe($.gulp.dest('build/css/'))
-
             .pipe($.bs.reload({
                 stream:true
             }));
