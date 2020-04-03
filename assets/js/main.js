@@ -172,9 +172,8 @@ $.validator.methods.email = function(value, element) {
 }
 
 $.validator.addMethod('lettersonly', function(value, element) {
-	return this.optional(element) || /^[a-z]+$/i.test(value);
-}, 'Вы можете ввести только буквы'); 
-
+ return this.optional(element) || /^[a-zа-яё\-\s]+$/iu.test(value);
+}, 'Вводить можно только буквы');
 
 $.validator.methods.number = function (value, element) {
 	return this.optional(element) || /^-?(?:\d+|\d{1,3}(?:[\s\.,]\d{3})+)(?:[\.,]\d+)?$/.test(value);
