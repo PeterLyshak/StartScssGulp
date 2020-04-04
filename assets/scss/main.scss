@@ -14,12 +14,11 @@
 @import "global/fonts";
 
 // PLUGINS STYLE
-//@import "plugins/";
+@import "plugins/icons";
 
 // BLOCKS STYLE
 @import "blocks/popup-block";
 @import "blocks/page-header";
-@import "blocks/first-block";
 
 @import "blocks/page-footer";
 
@@ -27,7 +26,6 @@ body {
 	position: relative;
 	background-color: #fff;
 
-    
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 	
@@ -40,20 +38,6 @@ body {
 	
 }
 
-.visually-hidden:not(:focus):not(:active), 
-input[type="checkbox"].visually-hidden, 
-input[type="radio"].visually-hidden { 
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    border: 0;
-    padding: 0;
-    white-space: nowrap;
-    -webkit-clip-path: inset(100%);
-    clip-path: inset(100%);
-    clip: rect(0 0 0 0);
-    overflow: hidden;
-}
+
 
 

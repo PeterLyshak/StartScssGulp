@@ -25,12 +25,12 @@ Task name          | Description
 ### Other tasks
 Task name          | Description                                                      
 :------------------|:----------------------------------
-`styles` 	       | compile .sass/.scss to .css. Included [postcss](https://github.com/postcss/postcss) for [autoprefixer](https://github.com/postcss/autoprefixer), flexbugs and other cool [plugins](https://github.com/postcss/postcss#plugins) you might add
+`sass` 	           | compile .sass/.scss to .css. Included [autoprefixer](https://github.com/postcss/autoprefixer)
 `html`             | compile html templates templates
-`script`           | combines `./assets/js/` .js code into separate files
-`jsplugins`        | combines `./assets/js/libs/` vendor files and custom .js code into `./build/js/plugins.min.js`
-`svgSprite`        | create svg symbol sprites (monocolor and multicolor)
-`imageMinify`      | optimize, minify and clone images
+`scripts`          | minifies `./assets/js/` .js code into separate files into `./build/js` 
+`scripts:lib`      | combines `./assets/js/libs/` vendor files and custom .js code into `./build/js/plugins.min.js`
+`svg`              | create svg symbol sprites or icon font (you can uncomment needed code in /gulp/tasks/svg.js)
+`img`              | optimize, minify and clone images
 `serve`            | run dev-server powered by [BrowserSync](https://www.browsersync.io/)
 `clean`            | clean `./build` folder
 `fonts`            | copy fonts files from `./assets/fonts/` path to `./build/fonts/` path

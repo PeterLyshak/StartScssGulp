@@ -7,24 +7,38 @@ var bodyScrollOptions = {
     reserveScrollBarGap: true
 };
 
-// Open Modal function
 function openModal(hrefModal) {
-    
+
     if ($(hrefModal).length > 0){
-        $(hrefModal).trigger('beforeOpenModal').fadeIn(300).trigger('afterOpenModal');
+		$(hrefModal).trigger('beforeOpenModal').addClass('active');
+		
+		setTimeout(function() {
+			$(hrefModal).addClass('fadeIn').trigger('afterOpenModal');
+		}, 50);
     
         bodyScrollLock.clearAllBodyScrollLocks();
-        bodyScrollLock.disableBodyScroll($(hrefModal)[0], bodyScrollOptions);
+        bodyScrollLock.disableBodyScroll(hrefModal, bodyScrollOptions);
     }
-	
+
 }
 
-// Close Modal function
 function closeModals() {
-	$('.popup-block:not(:hidden)').trigger('beforeCloseModal').fadeOut(200, function() {
-        bodyScrollLock.clearAllBodyScrollLocks();
-    }).trigger('afterCloseModal');
+	$('.popup-block.active').trigger('beforeCloseModal').removeClass('fadeIn');
+	
+	setTimeout(function() {
+		$('.popup-block.active').removeClass('active', function() {
+			bodyScrollLock.clearAllBodyScrollLocks();
+		}).trigger('afterCloseModal');
+
+		bodyScrollLock.clearAllBodyScrollLocks();
+	}, 200);
 }
+
+$(document).keydown(function(event) { 
+	if (event.keyCode == 27) { 
+		closeModals();
+	}
+});
 
 // Switch Modal function
 $(document.body).on('click','[data-toggle="switch-modal"]',function(e) {
@@ -98,23 +112,44 @@ $(document).off('focusout', 'input, textarea').on('focusout', 'input, textarea',
 
 $(document).off('keypress keyup blur', '.only-digits').on('keypress keyup blur', '.only-digits', function(event) {
 	$(this).val($(this).val().replace(/[^0-9]/g, ''));
-	
+
 	if ((event.which < 48 || event.which > 57)) {
+		event.preventDefault();
+	}
+});
+
+function isNumberKey(evt) {
+    var charCode = (evt.which) ? evt.which : event.keyCode
+    if (charCode != 43 && charCode > 31 && (charCode < 48 || charCode > 57))
+        return false;
+    return true;
+}
+
+$(document).off('keypress keyup blur', 'input[type="tel"]').on('keypress keyup blur', 'input[type="tel"]', function(event) {
+	$(this).val($(this).val().replace(/[^0-9\+]/g, ''));
+
+	if (!isNumberKey(event)) {
 		event.preventDefault();
 	}
 });
 
 $(document).off('keypress keyup blur', '.only-floats').on('keypress keyup blur', '.only-floats', function(event) {
 	$(this).val($(this).val().replace(/[^0-9\,.]/g, ''));
-	
+
 	if ((($(this).val().indexOf('.') != -1 || $(this).val().indexOf(',') != -1)) && (event.which < 48 || event.which > 57)) {
 		event.preventDefault();
 	}
 });
 
+$(document).off('click', '[data-toggle="clear-input"]').on('click', '[data-toggle="clear-input"]', function(e) {
+	e.preventDefault();
+
+	$(this).parent().find('input').val('').trigger('change');
+});
+
 $('[data-toggle="scroll-to-top"]').click(function(e) {
 	e.preventDefault();
-	
+
 	$('html,body').animate({
 		scrollTop: 0
 	}, 600);
@@ -122,10 +157,10 @@ $('[data-toggle="scroll-to-top"]').click(function(e) {
 
 $('[data-toggle="anchor"]').click(function(e) {
 	e.preventDefault();
-	
+
 	var dataTarget = $(this).attr('data-target'),
 		targetPos = $(dataTarget).offset().top - 150;
-	
+
 	$('html,body').animate({
 		scrollTop: targetPos
 	}, 400);
@@ -133,15 +168,15 @@ $('[data-toggle="anchor"]').click(function(e) {
 
 $('[data-toggle="tab"]').click(function(e) {
 	e.preventDefault();
-	
+
 	var dataTarget = $(this).attr('data-target');
-	
+
 	if ($(this).parent().is('li')) {
-		$(this).parent().addClass('active').siblings().removeClass('active');
+		$(this).addClass('active').parent().addClass('active').siblings().removeClass('active').children().removeClass('active');
 	} else {
 		$(this).addClass('active').siblings().removeClass('active');
 	}
-	
+
 	$(dataTarget).addClass('active').siblings().removeClass('active');
 });
 
@@ -284,5 +319,15 @@ $(document).ready(function() {
 		}, 0);
 	});
 	
+});
+
+$(window).on('scroll load orientationchange', function() {
+	var scrolledHeight = 100;
+
+	if ($(this).scrollTop() > scrolledHeight && !($('body').hasClass("scrolled")) ) {
+		$('body').addClass("scrolled");
+	} else if($(this).scrollTop() <= scrolledHeight && $('body').hasClass("scrolled")) {
+		$('body').removeClass("scrolled");
+	}
 });
 
