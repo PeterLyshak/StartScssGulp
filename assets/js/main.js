@@ -331,3 +331,21 @@ $(window).on('scroll load orientationchange', function() {
 	}
 });
 
+$('.agree-checkbox').each(function() {
+	var thisCheckbox = $(this);
+	var thisButton = $(this).parents('form').find('button[type="submit"]');
+	
+	$(thisCheckbox).on('change', function() {
+		if (!$(thisCheckbox).is(':checked')) {
+			$(thisButton).addClass('disabled');
+		} else {
+			$(thisButton).removeClass('disabled');
+		}
+	});
+	
+	if (!$(thisCheckbox).is(':checked')) {
+		$(thisButton).addClass('disabled');
+	}
+});
+
+
