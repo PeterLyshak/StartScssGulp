@@ -4,7 +4,8 @@ window.paddingRightItems = '#page-header';
 
 // Locking scroll plugin options
 var bodyScrollOptions = {
-    reserveScrollBarGap: true
+    reserveScrollBarGap: true,
+    allowTouchMove: true
 };
 
 function openModal(hrefModal) {
@@ -22,7 +23,7 @@ function openModal(hrefModal) {
 
 }
 
-function closeModals() {
+function closeAllModals() {
 	$('.popup-block.active').trigger('beforeCloseModal').removeClass('fadeIn');
 	
 	setTimeout(function() {
@@ -31,6 +32,18 @@ function closeModals() {
 		}).trigger('afterCloseModal');
 
 		bodyScrollLock.clearAllBodyScrollLocks();
+	}, 200);
+}
+
+function closeModal(hrefModal) {
+	$(hrefModal).trigger('beforeCloseModal').removeClass('fadeIn');
+	
+	setTimeout(function() {
+		$(hrefModal).removeClass('active', function() {
+			bodyScrollLock.clearAllBodyScrollLocks();
+		}).trigger('afterCloseModal');
+
+		bodyScrollLock.enableBodyScroll($(hrefModal)[0]);
 	}, 200);
 }
 
@@ -46,9 +59,9 @@ $(document.body).on('click','[data-toggle="switch-modal"]',function(e) {
 	
 	var hrefModal = $(this).attr('data-target');
 	
-	$('.popup-block:not(:hidden)').fadeOut(200);
+	$('.popup-block:not(:hidden)').removeClass('fadeIn active');
 	
-	$(hrefModal).fadeIn(200);
+	$(hrefModal).addClass('active').addClass('fadeIn').scrollTop(0);
     
 	bodyScrollLock.disableBodyScroll($(hrefModal)[0], bodyScrollOptions);
 	
@@ -68,7 +81,7 @@ $(document.body).on('click','.popup-block__overlay',function(e) {
 	var closeButton = $(this).children('[data-toggle="modal-dismiss"]');
 	
 	if (!(e.target != this)) {
-		closeModals();
+		closeModal($(this).parents('.popup-block')[0]);
 	}
 });
 
@@ -76,7 +89,7 @@ $(document.body).on('click','.popup-block__overlay',function(e) {
 $(document.body).on('click','[data-toggle="modal-dismiss"]',function(e) {
 	e.preventDefault();
 	
-	closeModals();
+	closeModal($(this).parents('.popup-block')[0]);
 });
 
 // Disable copy or paste possibility

@@ -12,6 +12,18 @@
 	
 	display: none;
 	
+	transition: opacity .3s ease-in-out;
+	
+	opacity: 0;
+	
+	&.active {
+		display: block;
+		
+		&.fadeIn {
+			opacity: 1;
+		}
+	}
+	
 	&__overlay {
 		position: relative;
 		display: block;
