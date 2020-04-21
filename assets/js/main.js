@@ -49,7 +49,7 @@ function closeModal(hrefModal) {
 
 $(document).keydown(function(event) { 
 	if (event.keyCode == 27) { 
-		closeModals();
+		closeAllModals();
 	}
 });
 
