@@ -43,13 +43,13 @@ function closeModal(hrefModal) {
 			bodyScrollLock.clearAllBodyScrollLocks();
 		}).trigger('afterCloseModal');
 
-		bodyScrollLock.enableBodyScroll($(hrefModal)[0]);
+		bodyScrollLock.clearAllBodyScrollLocks();
 	}, 200);
 }
 
 $(document).keydown(function(event) { 
 	if (event.keyCode == 27) { 
-		closeModals();
+		closeAllModals();
 	}
 });
 
