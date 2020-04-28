@@ -220,7 +220,8 @@ $.validator.methods.email = function(value, element) {
 }
 
 $.validator.addMethod('lettersonly', function(value, element) {
- return this.optional(element) || /^[a-zа-яё\-\s]+$/iu.test(value);
+ // return this.optional(element) || /^[a-zа-яё\-\s]+$/iu.test(value);
+ return this.optional(element) || /^[a-zа-яё]+$/i.test(value);
 }, 'Вводить можно только буквы');
 
 $.validator.methods.number = function (value, element) {
