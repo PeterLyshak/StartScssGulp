@@ -372,6 +372,7 @@ $(document).on('click', '.about-block__label', function(e) {
 $(document).on('click', '[data-toggle="speakers-expand"]', function(e) {
 	e.preventDefault();
 
+<<<<<<< HEAD
 	$(this).toggleClass('active');
 	$(this).next().stop().slideToggle(200, function() {
 		if ($(this).is(':visible')) {
@@ -411,3 +412,5 @@ $(document).ready(function() {
 		});
 	}
 });
+=======
+>>>>>>> parent of c8e786c... Fix
