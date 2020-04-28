@@ -1,0 +1,46 @@
+@font-face {
+    font-family: 'Gotham Pro';
+    src: local('GothamPro'),
+        url('../fonts/gothampro/hinted-GothamPro.woff2') format('woff2'),
+        url('../fonts/gothampro/hinted-GothamPro.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gotham Pro';
+    src: local('GothamPro-Black'),
+        url('../fonts/gothampro/hinted-GothamPro-Black.woff2') format('woff2'),
+        url('../fonts/gothampro/hinted-GothamPro-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gotham Pro';
+    src: local('GothamPro-Medium'),
+        url('../fonts/gothampro/hinted-GothamPro-Medium.woff2') format('woff2'),
+        url('../fonts/gothampro/hinted-GothamPro-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gotham Pro';
+    src: local('GothamPro-Light'),
+        url('../fonts/gothampro/hinted-GothamPro-Light.woff2') format('woff2'),
+        url('../fonts/gothampro/hinted-GothamPro-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gotham Pro';
+    src: local('GothamPro-Bold'),
+        url('../fonts/gothampro/hinted-GothamPro-Bold.woff2') format('woff2'),
+        url('../fonts/gothampro/hinted-GothamPro-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+
