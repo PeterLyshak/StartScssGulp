@@ -68,6 +68,12 @@ select.form-control {
 		color: $input-color;
 		background-color: $input-bg;
 	}
+
+	// Styles for "pseudo" placeholder when select is not selected
+	&:not(.not-empty) {
+		color: #BCBFC7;
+		font-weight: 400;
+	}
 }
 
 .checkbox-wrapper {

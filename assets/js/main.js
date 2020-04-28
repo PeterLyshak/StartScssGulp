@@ -107,7 +107,7 @@ $('input, textarea').each(function(e) {
 });
 
 
-$(document).off('change focusout keydown keypress input', 'input, textarea').on('change focusout keydown keypress input', 'input, textarea', function(e) {
+$(document).off('change focusout keydown keypress input', 'input, textarea, select').on('change focusout keydown keypress input', 'input, textarea, select', function(e) {
 	if ($(this).val() != '') {
 		$(this).addClass('not-empty').parent().addClass('not-empty');
 	} else {
@@ -115,11 +115,11 @@ $(document).off('change focusout keydown keypress input', 'input, textarea').on(
 	}
 });
 
-$(document).off('focusin', 'input, textarea').on('focusin', 'input, textarea', function(e) {
+$(document).off('focusin', 'input, textarea, select').on('focusin', 'input, textarea, select', function(e) {
 	$(this).parent().addClass('focused');
 });
 
-$(document).off('focusout', 'input, textarea').on('focusout', 'input, textarea', function(e) {
+$(document).off('focusout', 'input, textarea, select').on('focusout', 'input, textarea, select', function(e) {
 	$(this).parent().removeClass('focused');
 });
 
@@ -217,10 +217,10 @@ $.extend($.validator.messages, {
 
 $.validator.methods.email = function(value, element) {
 	return this.optional( element ) || /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/.test( value );
-}
+};
 
 $.validator.addMethod('lettersonly', function(value, element) {
- return this.optional(element) || /^[a-zа-яё\-\s]+$/iu.test(value);
+	return this.optional(element) || /^[a-zа-яё\-\s]+$/i.test(value);
 }, 'Вводить можно только буквы');
 
 $.validator.methods.number = function (value, element) {
