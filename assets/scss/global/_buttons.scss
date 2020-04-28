@@ -5,17 +5,17 @@
   background-color: $brand-color;
   
   text-align: center;
-  border-radius: 0;
+  border-radius: 5px;
   color: #fff;
 
   font-family: $font-family;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 500;
 
   line-height: 20px;
 
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
   
   transition: all 0.2s ease-in-out;
   
@@ -26,7 +26,6 @@
   }
   
   &:active {
-    transform: translateY(3px);
     box-shadow: none;
     background-color: darken($brand-color, 10%);
   }
@@ -37,5 +36,12 @@
     color: #fff;
     text-decoration: none !important;
     outline: none !important;
+  }
+
+  &.disabled,
+  &[disabled] {
+    background-color: #FAFAFA;
+    pointer-events: none;
+    color: #BCBFC7;
   }
 }
