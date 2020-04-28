@@ -199,7 +199,7 @@ $('input[type="number"]').on('keydown', function(e){
 
 // Form Validation
 $.extend($.validator.messages, {
-    required: "Заполните поле",
+    required: "Это поле обязательное",
     email: "Введите правильный формат E-mail",
     url: "Введите правильный формат URL",
     date: "Введите правильный формат даты",
@@ -220,8 +220,7 @@ $.validator.methods.email = function(value, element) {
 }
 
 $.validator.addMethod('lettersonly', function(value, element) {
- // return this.optional(element) || /^[a-zа-яё\-\s]+$/iu.test(value);
- return this.optional(element) || /^[a-zа-яё]+$/i.test(value);
+ return this.optional(element) || /^[a-zа-яё\-\s]+$/iu.test(value);
 }, 'Вводить можно только буквы');
 
 $.validator.methods.number = function (value, element) {
@@ -351,66 +350,16 @@ $('.agree-checkbox').each(function() {
 	
 	$(thisCheckbox).on('change', function() {
 		if (!$(thisCheckbox).is(':checked')) {
-			$(thisButton).addClass('disabled').prop('disabled', true);
+			$(thisButton).addClass('disabled');
 		} else {
-			$(thisButton).removeClass('disabled').prop('disabled', false);
+			$(thisButton).removeClass('disabled');
 		}
 	});
 	
 	if (!$(thisCheckbox).is(':checked')) {
-		$(thisButton).addClass('disabled').prop('disabled', true);
+		$(thisButton).addClass('disabled');
 	}
 });
 
-$(document).on('click', '.about-block__label', function(e) {
-	e.preventDefault();
 
-	$(this).toggleClass('active');
-	$(this).parents('.about-block__item-wrapper').find('.about-block__descr').stop().slideToggle(200);
-});
 
-$(document).on('click', '[data-toggle="speakers-expand"]', function(e) {
-	e.preventDefault();
-
-<<<<<<< HEAD
-	$(this).toggleClass('active');
-	$(this).next().stop().slideToggle(200, function() {
-		if ($(this).is(':visible')) {
-			$(this).css('display','block');
-		}
-	});
-});
-
-$(document).on('click', '#bottombar_reg_button', function(e) {
-	e.preventDefault();
-
-	if ($(window).width() > 767) {
-		var dataTarget = '#sidebar_reg',
-			targetPos = $(dataTarget).offset().top - 100;
-
-		$('html,body').animate({
-			scrollTop: targetPos
-		}, 400);
-	} else {
-		
-	}
-});
-
-$(document).ready(function() {
-	$.fn.select2.defaults.set('language', 'ru');
-
-	if ($(window).width() > 767) {
-		$('select').select2({
-			minimumInputLength: 0,
-			locale: 'ru',
-			dropdownAutoWidth : true,
-	    	width: '100%',
-			allowClear: true,
-			placeholder: function(){
-				$(this).attr('data-placeholder');
-			}
-		});
-	}
-});
-=======
->>>>>>> parent of c8e786c... Fix
