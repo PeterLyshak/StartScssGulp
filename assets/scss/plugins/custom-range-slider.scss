@@ -1,0 +1,51 @@
+.custom-range-slider {
+
+    .irs-max,
+    .irs-min {
+        display: none;
+    }
+
+    .irs-from,
+    .irs-to,
+    .irs-single {
+        background-color: transparent;
+        color: #fff;
+        font-weight: 700;
+        font-size: 12px;
+
+        &:before {
+            content: none;
+        }
+    }
+
+    .irs-handle.state_hover>i:first-child,
+    .irs-handle:hover>i:first-child {
+        background-color: #fff;
+    }
+
+    .irs-line {
+        background-color: #fff;
+        height: 1px;
+        top: 26px;
+    }
+
+    .irs-handle {
+        cursor: pointer;
+        top: 18px;
+        width: 16px;
+        height: 16px;
+        border-radius: 100%;
+        background-color: $brand-color;
+        border: 2px solid #fff;
+
+        i,
+        i:first-child {
+            display: none;
+        }
+    }
+
+    .irs-bar {
+        background-color: #fff;
+        height: 3px;
+    }
+}

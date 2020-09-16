@@ -98,7 +98,7 @@ $(document).off('cut copy paste', '.no-paste').on('cut copy paste', '.no-paste',
 });
 
 // Adding not-empty class if the input/textarea has value
-$('input, textarea').each(function(e) {
+$('input, textarea, select').each(function(e) {
 	if ($(this).val() != '') {
 		$(this).addClass('not-empty').parent().addClass('not-empty');
 	} else {
@@ -351,15 +351,20 @@ $('.agree-checkbox').each(function() {
 	$(thisCheckbox).on('change', function() {
 		if (!$(thisCheckbox).is(':checked')) {
 			$(thisButton).addClass('disabled');
+			$(thisButton).attr('disabled', 'disabled');
 		} else {
 			$(thisButton).removeClass('disabled');
+			$(thisButton).removeAttr('disabled');
 		}
 	});
 	
 	if (!$(thisCheckbox).is(':checked')) {
 		$(thisButton).addClass('disabled');
+		$(thisButton).attr('disabled', 'disabled');
 	}
 });
 
-
+$(document).ready(function() {
+	$(".js-range-slider").ionRangeSlider();
+});
 

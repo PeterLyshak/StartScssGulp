@@ -1,5 +1,85 @@
 .page-header {
-	
+	width: 100%;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	z-index: 40;
+
+	&__main-row {
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+
+		padding-top: 40px;
+		padding-bottom: 40px;
+
+		@include media-breakpoint-down(lg) {
+			padding-top: 30px;
+			padding-bottom: 30px;
+		}
+	}
+
+	&__logo {
+		display: block;
+
+		width: 165px;
+		margin-bottom: auto;
+
+		img {
+			display: block;
+			width: 100%;
+			height: auto;
+
+			backface-visibility: hidden;
+		}
+
+		@include media-breakpoint-down(lg) {
+			width: 141px;
+		}
+	}
+
+	&__tel-block {
+		margin-left: auto;
+		margin-right: 90px;
+
+		a {
+			font-size: 20px;
+			font-weight: 700;
+			text-decoration: none !important;
+			letter-spacing: 0.1em;
+			color: #fff;
+
+			transition: all 0.2s ease-in-out;
+
+			&:hover {
+				color: #fff;
+				opacity: 0.7;
+			}
+		}
+
+		@include media-breakpoint-down(lg) {
+			a {
+				font-size: 17px;
+			}
+		}
+
+		@include media-breakpoint-down(md) {
+			margin-right: 50px;
+		}
+	}
+
+	&__callback-button {
+		width: 266px;
+		display: block;
+
+		@include media-breakpoint-down(lg) {
+			width: 224px;
+		}
+	}
 	
 }
 

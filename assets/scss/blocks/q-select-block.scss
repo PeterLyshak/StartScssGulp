@@ -1,0 +1,96 @@
+.q-select-block {
+    width: 100%;
+    padding-top: 40px;
+    overflow: hidden;
+    margin-bottom: 64px;
+
+    &__subtitle {
+        width: 100%;
+        max-width: 880px;
+        margin-left: auto;
+        margin-right: auto;
+
+        margin-bottom: 65px;
+    }
+
+    &__top-label {
+        font-size: 12px;
+        line-height: 20px;
+        text-transform: uppercase;
+
+        letter-spacing: 0.05em;
+
+        margin-bottom: 32px;
+        white-space: nowrap;
+    }
+
+    &__main-block {
+        width: 100%;
+        position: relative;
+        
+        &:before {
+            content: "";
+            
+            height: calc(100% - 52px);
+            top: 52px;
+            position: absolute;
+            left: 50%;
+            
+            margin-left: -50vw;
+            width: 100vw;
+
+            background-image: linear-gradient(to bottom,#F5F5F5 80%, transparent 80%);
+            background-size: 100% 48px;
+            background-repeat: repeat-y;
+            background-position: left top;
+        }
+    }
+
+    &__options-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        
+
+        li {
+            width: 100%;
+
+            &:not(:last-child) {
+                margin-bottom: 8px;
+            }
+
+
+            a {
+                display: block;
+                width: 100%;
+                font-size: 15px;
+                line-height: 20px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                text-decoration: none !important;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                font-weight: 700;
+
+                color: $brand-color;
+                white-space: nowrap;
+
+                transition: all 0.2s ease-in-out;
+
+                &.lowercase {
+                    text-transform: none;
+                }
+
+                &:hover {
+                    color: $brand-color;
+                    opacity: 0.8;
+                }
+
+                @include media-breakpoint-down(md) {
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+}

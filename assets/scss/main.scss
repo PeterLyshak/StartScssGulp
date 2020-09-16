@@ -16,10 +16,19 @@
 
 // PLUGINS STYLE
 @import "plugins/icons";
+@import "plugins/select2";
+@import "plugins/ion.rangeSlider";
+@import "plugins/custom-range-slider";
 
 // BLOCKS STYLE
 @import "blocks/popup-block";
 @import "blocks/page-header";
+@import "blocks/first-block";
+@import "blocks/offers-block";
+@import "blocks/catalog-block";
+@import "blocks/catalog-filter";
+@import "blocks/q-select-block";
+@import "blocks/feedback-block";
 
 @import "blocks/page-footer";
 
@@ -31,7 +40,7 @@ body {
     -moz-osx-font-smoothing: grayscale;
 	
 	font-family: $font-family;
-	color: #000;
+	color: $brand-color;
 	font-weight: 400;
 	line-height: 1.2;
 	font-size: 16px;
