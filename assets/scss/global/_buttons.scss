@@ -9,28 +9,15 @@
   color: #fff;
 
   font-family: $font-family;
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 700;
-
-  letter-spacing: 0.1em;
 
   line-height: 20px;
 
-  text-transform: uppercase;
-
-  padding-left: 20px;
-  padding-right: 20px;
-
-  padding-top: 18px;
-  padding-bottom: 18px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   
   transition: all 0.2s ease-in-out;
-
-  @include media-breakpoint-down(lg) {
-    font-size: 15px;
-    padding-top: 13px;
-    padding-bottom: 13px;
-  }
   
   &:hover {
     background-color: lighten($brand-color, 5%);
@@ -39,6 +26,7 @@
   }
   
   &:active {
+    transform: translateY(3px);
     box-shadow: none;
     background-color: darken($brand-color, 10%);
   }
@@ -49,41 +37,5 @@
     color: #fff;
     text-decoration: none !important;
     outline: none !important;
-  }
-
-  &.btn-bordered {
-    background-color: transparent;
-    border: 2px solid $brand-color;
-    color: $brand-color;
-
-    &:hover {
-      background-color: $brand-color;
-      box-shadow: none;
-      color: #fff;
-    }
-    
-    &:active {
-      color: #fff;
-      box-shadow: none;
-      background-color: darken($brand-color, 5%);
-    }
-
-    &.btn-white {
-      border: 2px solid #fff;
-      color: #fff;
-
-      &:hover {
-        background-color: #fff;
-        box-shadow: none;
-        color: $brand-color;
-      }
-      
-      &:active {
-        color: $brand-color;
-        opacity: 0.8;
-        box-shadow: none;
-        background-color: #fff;
-      }
-    }
   }
 }
